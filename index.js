@@ -16,16 +16,33 @@
 
 const removeDuplicates = (nums) => {
     //write your code here
+    // if no array is passed in or the array is empty return 0
+    if(nums === null || nums.length === 0) return 0;
+    // set k to be the first index in the array
+    let k = 0;
+    // iterate through the array 
+    for (let r = 1; r < nums.length; r++){
+        // if the elements are not equal to each other, then
+        // update value at index k + 1 with value at index r
+        // increment k by 1
+        if (nums[k] !== nums[r]){
+            nums[k + 1] = nums[r];
+            k++;
+        }
+    }
+    // return how many elements were 'removed'
+    return k + 1;
+
 };
 
 // Example usage (commented out to avoid interference with tests)
-// const nums1 = [1, 1, 2];
-// console.log(removeDuplicates(nums1)); // → 2
-// console.log(nums1); // → [1, 2, _]
+const nums1 = [1, 1, 2];
+console.log(removeDuplicates(nums1)); // → 2
+console.log(nums1); // → [1, 2, _]
 //
-// const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
-// console.log(removeDuplicates(nums2)); // → 5
-// console.log(nums2); // → [0, 1, 2, 3, 4, _, _, _, _, _]
+const nums2 = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+console.log(removeDuplicates(nums2)); // → 5
+console.log(nums2); // → [0, 1, 2, 3, 4, _, _, _, _, _]
 
 // Export the function for testing
 module.exports = { removeDuplicates };
